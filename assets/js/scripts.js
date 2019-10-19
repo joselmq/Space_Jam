@@ -27,7 +27,7 @@ function enter(e) {
 * Devuelve false si el objeto se puede soltar en ese elemento y true en caso contrario.
 **/
 function over(e) {
-	if (e.target.className == 'contenedorPieza' || e.target.id == 'contenedorPiezas') return false;
+	if (e.target.className == 'containerPart' || e.target.id == 'containerParts') return false;
 	else return true;
 }
 
@@ -38,17 +38,29 @@ function drop(e) {
 	e.preventDefault(); // Evita que se ejecute la accion por defecto del elemento soltado.
 	var elementoArrastrado = e.dataTransfer.getData('Text');
 	e.target.appendChild(document.getElementById(elementoArrastrado)); // Coloca el elemento soltado sobre el elemento desde el que se llamo esta funcion
-	comprobarPuzzle();
+	checkPuzzle();
 }
 
-function comprobarPuzzle() {
+function checkPuzzle() {
+    console.log(document.getElementById('pieza1').parentNode.id);
+    
 	if (
 		document.getElementById('pieza1').parentNode.id == 'uno' &&
 		document.getElementById('pieza2').parentNode.id == 'dos' &&
 		document.getElementById('pieza3').parentNode.id == 'tres' &&
 		document.getElementById('pieza4').parentNode.id == 'cuatro'
 	) {
-		alert('Felicidades, has hecho el puzzle.');
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            timer: 3000
+        })
+          
+        Toast.fire({
+            type: 'success',
+            title: 'Felicidades, has hecho el puzzle.'
+        })
 	}
 }
 
@@ -61,6 +73,6 @@ function checkBrowser() {
 		(navigator.userAgent.toLowerCase().indexOf('safari') > -1 &&
 			navigator.userAgent.toLowerCase().indexOf('chrome') == -1)
 	) {
-		alert('Your browser does not support HTML5 Drag & Drop functions correctly. Try another browser.');
+        Swal.fire('Your browser does not support HTML5 Drag & Drop functions correctly. Try another browser.')
 	}
 }
