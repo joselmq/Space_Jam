@@ -11,3 +11,14 @@ Matias Poblete
 1UP for NASA Earth
 
 * utftfut
+### Necesidad Ambientacion.
+
+### Idea.
+-Nuevo Captcha
+-Rapido
+-Entretenido.
+-Facil
+
+
+### Solución.
+
