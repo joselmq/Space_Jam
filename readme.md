@@ -1,11 +1,20 @@
 # Team Space_Jam
 
 ### Integrantes:
-Jhonny Rafael CÛrdova Flores
+Jhonny Rafael C√≥rdova Flores
 Leonel Rojas
-Norberto RubÈn Scuglia
-JosÈ Luis MartÌnez
+Norberto Rub√©n Scuglia
+Jos√© Luis Mart√≠nez
 Matias Poblete
 
-### DesafiÌo:
+### Desafi√≠o:
 1UP for NASA Earth
+
+### Necesidad ambiental:
+
+
+### Idea:
+
+
+### Soluci√≥n:
+
