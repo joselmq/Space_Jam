@@ -18,9 +18,9 @@ class ImageController extends Controller
 
     public function getImage()
     {
-        $id = $this->nasaImagesSrv->getNasaImageId();
+        $image_ = $this->nasaImagesSrv->getNasaImageId();
 
-        $urlAPI = 'https://images-api.nasa.gov/search?nasa_id=' . $id;
+        $urlAPI = 'https://images-api.nasa.gov/search?nasa_id=' . $image_['id'];
         $client = new Client();
         $response = $client->request('GET', $urlAPI);
         $data = json_decode((string)$response->getBody(), true);
@@ -57,6 +57,7 @@ class ImageController extends Controller
                     'created_at' => $image['data'][0]['date_created'],
                 ],
                 'originalImage' => url("images/{$timestamp}.png"),
+                'url_project' => $image_['url_project']
             ];
 
         }
