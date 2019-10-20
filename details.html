@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/form-validation.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.33.1/dist/sweetalert2.css">
+    <title>CaptchingForThePlanet</title>
+
+    <script src="assets/js/scripts.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body onload="checkBrowser();">
+    <div class="container">
+        <div class="py-1 text-center">
+            <img class="d-block mx-auto mb-4" src="assets/images/logo-space-apps-cl.png" alt="" width="150"
+                height="150">
+            <h1>Thanks for helping the planet</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 order-md-1 text-center">
+                <img src="" class="img-fluid" alt="help the planet image" id="originalImage">
+                <br>
+                <label for="titleImage"><b>Title:</b></label>
+                <p id="titleImage"></p>
+
+                <label for="titleImage"><b>Description:</b></label>
+                <p id="descriptionImage"></p>
+
+                <label for="helpPlanet"><b>Do you want to help save the planet?</b></label>
+                <br>
+                <p><b>BTC:</b></p>
+                <img src="assets/images/btc.png" class="img-fluid" alt="btc" id="btcDonation" width="100" height="100">
+                <br><br>
+                <img src="assets/images/payPlanet.png" class="img-fluid" alt="help the planet donation" id="donation">
+                <div class="donationBTC">
+                    <p>Or copy the following address:</p>
+                    <p>36jxe7kGdq4yyGG4SAESxnqyFZNSeDuefR</p>
+                </div>
+                <br>
+                <p><b>PayPal:</b> <a href="https://paypal.me/leonelhrp?locale.x=es_XC" target="_blank">Go to donate</a></p>
+                <img src="assets/images/paypal.png" href="https://paypal.me/leonelhrp?locale.x=es_XC" class="img-fluid" alt="paypal" id="paypalDonation" width="100" height="100">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.18.5/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <script src="assets/js/form-validation.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script>
+        const details = getDetails()
+        document.getElementById("originalImage").src = details.originalImage
+        document.getElementById("titleImage").innerHTML = details.title;
+        document.getElementById("descriptionImage").innerHTML = details.description;
+    </script>
+</body>
+
+</html>
