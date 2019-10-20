@@ -44,13 +44,19 @@ class ImageController extends Controller
                 return response()->json([], 404);
             }
 
+            $images = [
+                url("/images/{$timestamp}_02_01.png"),
+                url("/images/{$timestamp}_01_01.png"),
+                url("/images/{$timestamp}_01_02.png"),
+                url("/images/{$timestamp}_02_02.png"),
+            ];
+
+            $collection = collect($images);
+
+            $shuffledImages = $collection->shuffle();
+
             $info = [
-                'images' => [
-                    url("/images/{$timestamp}_02_01.png"),
-                    url("/images/{$timestamp}_01_01.png"),
-                    url("/images/{$timestamp}_01_02.png"),
-                    url("/images/{$timestamp}_02_02.png"),
-                ],
+                'images' => $shuffledImages->toArray(),
                 'info' => [
                     'title' => $image['data'][0]['title'],
                     'description' => $image['data'][0]['description'],
