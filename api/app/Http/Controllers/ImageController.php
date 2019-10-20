@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\NasaImagesService;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -9,9 +10,17 @@ use Symfony\Component\Process\Process;
 
 class ImageController extends Controller
 {
+    private $nasaImagesSrv;
+    public function __construct(NasaImagesService $nasaImagesSrv)
+    {
+        $this->nasaImagesSrv = $nasaImagesSrv;
+    }
+
     public function getImage()
     {
-        $urlAPI = 'https://images-api.nasa.gov/search?q=hurricanes';
+        $id = $this->nasaImagesSrv->getNasaImageId();
+
+        $urlAPI = 'https://images-api.nasa.gov/search?nasa_id=' . $id;
         $client = new Client();
         $response = $client->request('GET', $urlAPI);
         $data = json_decode((string)$response->getBody(), true);
@@ -32,7 +41,7 @@ class ImageController extends Controller
 
             // executes after the command finishes
             if (!$process->isSuccessful()) {
-                throw new ProcessFailedException($process);
+                return response()->json([], 404);
             }
 
             $info = [

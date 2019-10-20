@@ -1,0 +1,9 @@
+version: '3'
+services:
+  nginx:
+    container_name: ${PROJECT_NAME}.nginx
+    build: docker/nginx
+    volumes:
+      - .:/${PROJECT_NAME}
+    ports:
+      - "${PORT}:80"
