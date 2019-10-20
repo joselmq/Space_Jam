@@ -60,18 +60,18 @@
                         </div>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3" style="display: none;" id="captchingForThePlanet">
                         <section id="containerPuzzle">
                             <div id="containerParts" ondragenter="return enter(event)" ondragover="return over(event)"
                                 ondrop="return drop(event)">
-                                <img id="pieza3" src="assets/images/pieza3.jpg" alt="pieza3" draggable="true"
-                                    ondragstart="start(event)" ondragend="end(event)">
-                                <img id="pieza2" src="assets/images/pieza2.jpg" alt="pieza2" draggable="true"
-                                    ondragstart="start(event)" ondragend="end(event)">
-                                <img id="pieza4" src="assets/images/pieza4.jpg" alt="pieza4" draggable="true"
-                                    ondragstart="start(event)" ondragend="end(event)">
-                                <img id="pieza1" src="assets/images/pieza1.jpg" alt="pieza1" draggable="true"
-                                    ondragstart="start(event)" ondragend="end(event)">
+                                <img id="pieza3" src="" alt="pieza3" draggable="true" ondragstart="start(event)"
+                                    ondragend="end(event)">
+                                <img id="pieza2" src="" alt="pieza2" draggable="true" ondragstart="start(event)"
+                                    ondragend="end(event)">
+                                <img id="pieza4" src="" alt="pieza4" draggable="true" ondragstart="start(event)"
+                                    ondragend="end(event)">
+                                <img id="pieza1" src="" alt="pieza1" draggable="true" ondragstart="start(event)"
+                                    ondragend="end(event)">
                             </div>
                             <div id="puzzle">
                                 <div class="containerPart" id="uno" ondragenter="return enter(event)"
@@ -83,6 +83,10 @@
                                 <div class="containerPart" id="cuatro" ondragenter="return enter(event)"
                                     ondragover="return over(event)" ondrop="return drop(event)"></div>
                             </div>
+                            <!-- Button trigger modal -->
+                        </section>
+                        <section class="text-center">
+                            <a data-toggle="modal" data-target="#answer" style="color:blue">Ver solución</a>
                         </section>
 
                     </div>
@@ -92,21 +96,25 @@
                 </form>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="answer" tabindex="-1" role="dialog" aria-labelledby="answerLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="answerLabel">Así debe lucir! ;)</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="" alt="" id="answerImage">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <script>
-        // Want to use async/await? Add the `async` keyword to your outer function/method.
-        async function getImage() {
-            try {
-                const { data } = await axios.get('http://54.144.195.125:8010/api/getImage');
-                console.log(data);
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
-        getImage()
-    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -122,6 +130,10 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.18.5/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
     <script src="assets/js/form-validation.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script>
+        getImage();
+    </script>
 </body>
 
 </html>

@@ -42,25 +42,27 @@ function drop(e) {
 }
 
 function checkPuzzle() {
-    console.log(document.getElementById('pieza1').parentNode.id);
-    
 	if (
-		document.getElementById('pieza1').parentNode.id == 'uno' &&
-		document.getElementById('pieza2').parentNode.id == 'dos' &&
-		document.getElementById('pieza3').parentNode.id == 'tres' &&
+		document.getElementById('pieza1').parentNode.id == 'tres' &&
+		document.getElementById('pieza2').parentNode.id == 'uno' &&
+		document.getElementById('pieza3').parentNode.id == 'dos' &&
 		document.getElementById('pieza4').parentNode.id == 'cuatro'
 	) {
+        
         const Toast = Swal.mixin({
             toast: true,
             position: 'top',
             showConfirmButton: false,
             timer: 3000
         })
-          
+
         Toast.fire({
             type: 'success',
             title: 'Felicidades, has hecho el puzzle.'
         })
+        
+        window.open("../details.html");
+
 	}
 }
 
@@ -86,3 +88,19 @@ function checkBrowser() {
         })
 	}
 }
+
+
+function copyText() {
+    /* Get the text field */
+    var copyText = document.getElementById("codeCopy");
+  
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+  
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+  
+    /* Alert the copied text */
+    alert("Copied the text: " + copyText.value);
+  }
