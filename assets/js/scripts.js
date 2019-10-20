@@ -73,6 +73,16 @@ function checkBrowser() {
 		(navigator.userAgent.toLowerCase().indexOf('safari') > -1 &&
 			navigator.userAgent.toLowerCase().indexOf('chrome') == -1)
 	) {
-        Swal.fire('Your browser does not support HTML5 Drag & Drop functions correctly. Try another browser.')
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            timer: 3000
+        })
+          
+        Toast.fire({
+            type: 'error',
+            title: 'Your browser does not support HTML5 Drag & Drop functions correctly. Try another browser.'
+        })
 	}
 }
