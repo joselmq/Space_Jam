@@ -16,16 +16,37 @@ async function getImage() {
             data
         } = await axios.get('http://54.144.195.125:8010/api/getImage');
 
-        console.log(data);
+        let arr = [1, 2, 3, 4];
         
+        const shuffle = ([...arr]) => {
+            let m = arr.length;
+            while (m) {
+                const i = Math.floor(Math.random() * m--);
+                [arr[m], arr[i]] = [arr[i], arr[m]];
+            }
+            return arr;
+        };
+
+        arr = shuffle(arr);
+        
+        let html = `
+            <img id="pieza${arr[0]}" src="" alt="pieza${arr[0]}" draggable="true" ondragstart="start(event)" ondragend="end(event)">
+            <img id="pieza${arr[1]}" src="" alt="pieza${arr[1]}" draggable="true" ondragstart="start(event)" ondragend="end(event)">
+            <img id="pieza${arr[2]}" src="" alt="pieza${arr[2]}" draggable="true" ondragstart="start(event)" ondragend="end(event)">
+            <img id="pieza${arr[3]}" src="" alt="pieza${arr[3]}" draggable="true" ondragstart="start(event)" ondragend="end(event)">
+        `;
+
+        
+        document.getElementById("containerParts").innerHTML = html
+
         document.getElementById("pieza1").src = await data.images[0];
         document.getElementById("pieza2").src = await data.images[1];
         document.getElementById("pieza3").src = await data.images[2];
         document.getElementById("pieza4").src = await data.images[3];
         document.getElementById("answerImage").src = await data.originalImage;
 
-        let details = await data.info
-        details.originalImage = await data.originalImage
+        let details = data.info
+        details.originalImage = data.originalImage
 
         setDetails(details)
 

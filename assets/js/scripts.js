@@ -35,17 +35,17 @@ function over(e) {
 * Función que se ejecuta cuando un elemento arrastrable se suelta sobre el elemento desde del que se llama. 
 **/
 function drop(e) {
-	e.preventDefault(); // Evita que se ejecute la accion por defecto del elemento soltado.
-	var elementoArrastrado = e.dataTransfer.getData('Text');
+    e.preventDefault(); // Evita que se ejecute la accion por defecto del elemento soltado.
+    var elementoArrastrado = e.dataTransfer.getData('Text');
 	e.target.appendChild(document.getElementById(elementoArrastrado)); // Coloca el elemento soltado sobre el elemento desde el que se llamo esta funcion
 	checkPuzzle();
 }
 
 function checkPuzzle() {
 	if (
-		document.getElementById('pieza1').parentNode.id == 'tres' &&
-		document.getElementById('pieza2').parentNode.id == 'uno' &&
-		document.getElementById('pieza3').parentNode.id == 'dos' &&
+		document.getElementById('pieza1').parentNode.id == 'uno' &&
+		document.getElementById('pieza2').parentNode.id == 'dos' &&
+		document.getElementById('pieza3').parentNode.id == 'tres' &&
 		document.getElementById('pieza4').parentNode.id == 'cuatro'
 	) {
         
@@ -88,19 +88,3 @@ function checkBrowser() {
         })
 	}
 }
-
-
-function copyText() {
-    /* Get the text field */
-    var copyText = document.getElementById("codeCopy");
-  
-    /* Select the text field */
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-  
-    /* Copy the text inside the text field */
-    document.execCommand("copy");
-  
-    /* Alert the copied text */
-    alert("Copied the text: " + copyText.value);
-  }
