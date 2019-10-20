@@ -11,7 +11,14 @@ class ImageController extends Controller
 {
     public function getImage()
     {
-        $urlAPI = 'https://images-api.nasa.gov/search?q=hurricanes';
+        $keyworks = [
+            'GSFC_20171208_Archive_e000201',
+        ];
+
+        $keyIndex = array_rand($keyworks);
+        $keyWord = $keyworks[$keyIndex];
+
+        $urlAPI = 'https://images-api.nasa.gov/search?nasa_id=' . $keyWord;
         $client = new Client();
         $response = $client->request('GET', $urlAPI);
         $data = json_decode((string)$response->getBody(), true);
@@ -32,7 +39,7 @@ class ImageController extends Controller
 
             // executes after the command finishes
             if (!$process->isSuccessful()) {
-                throw new ProcessFailedException($process);
+                return response()->json([], 404);
             }
 
             $info = [
