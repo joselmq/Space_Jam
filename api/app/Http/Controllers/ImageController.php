@@ -56,7 +56,7 @@ class ImageController extends Controller
                     'description' => $image['data'][0]['description'],
                     'created_at' => $image['data'][0]['date_created'],
                 ],
-                'originalImage' => url("/images/{$fileName}"),
+                'originalImage' => url("images/{$timestamp}.png"),
             ];
 
         }
