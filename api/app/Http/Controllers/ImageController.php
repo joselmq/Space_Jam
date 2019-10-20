@@ -46,9 +46,9 @@ class ImageController extends Controller
 
             $info = [
                 'images' => [
-                    url("/images/{$timestamp}_02_01.png"),
                     url("/images/{$timestamp}_01_01.png"),
                     url("/images/{$timestamp}_01_02.png"),
+                    url("/images/{$timestamp}_02_01.png"),
                     url("/images/{$timestamp}_02_02.png"),
                 ],
                 'info' => [
