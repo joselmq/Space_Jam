@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\NasaImagesService;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -9,16 +10,17 @@ use Symfony\Component\Process\Process;
 
 class ImageController extends Controller
 {
+    private $nasaImagesSrv;
+    public function __construct(NasaImagesService $nasaImagesSrv)
+    {
+        $this->nasaImagesSrv = $nasaImagesSrv;
+    }
+
     public function getImage()
     {
-        $keyworks = [
-            'GSFC_20171208_Archive_e000201',
-        ];
+        $id = $this->nasaImagesSrv->getNasaImageId();
 
-        $keyIndex = array_rand($keyworks);
-        $keyWord = $keyworks[$keyIndex];
-
-        $urlAPI = 'https://images-api.nasa.gov/search?nasa_id=' . $keyWord;
+        $urlAPI = 'https://images-api.nasa.gov/search?nasa_id=' . $id;
         $client = new Client();
         $response = $client->request('GET', $urlAPI);
         $data = json_decode((string)$response->getBody(), true);
