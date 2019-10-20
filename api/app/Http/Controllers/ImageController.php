@@ -11,7 +11,7 @@ class ImageController extends Controller
 {
     public function getImage()
     {
-        $urlAPI = 'https://images-api.nasa.gov/search?q=fires';
+        $urlAPI = 'https://images-api.nasa.gov/search?q=hurricanes';
         $client = new Client();
         $response = $client->request('GET', $urlAPI);
         $data = json_decode((string)$response->getBody(), true);
@@ -46,11 +46,12 @@ class ImageController extends Controller
                     'title' => $image['data'][0]['title'],
                     'description' => $image['data'][0]['description'],
                     'created_at' => $image['data'][0]['date_created'],
-                ]
+                ],
+                'originalImage' => url("/images/{$fileName}"),
             ];
 
         }
 
-        return response()->json(['data' => $info], 200);
+        return response()->json($info, 200);
     }
 }
