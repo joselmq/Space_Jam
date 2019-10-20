@@ -35,7 +35,6 @@ async function getImage() {
             <img id="pieza${arr[2]}" src="" alt="pieza${arr[2]}" draggable="true" ondragstart="start(event)" ondragend="end(event)">
             <img id="pieza${arr[3]}" src="" alt="pieza${arr[3]}" draggable="true" ondragstart="start(event)" ondragend="end(event)">
         `;
-
         
         document.getElementById("containerParts").innerHTML = html
 
@@ -47,6 +46,7 @@ async function getImage() {
 
         let details = data.info
         details.originalImage = data.originalImage
+        details.url_project = data.url_project
 
         setDetails(details)
 

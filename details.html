@@ -49,10 +49,20 @@
                 <br>
                 <p><b>PayPal:</b> <a href="https://paypal.me/leonelhrp?locale.x=es_XC" target="_blank">Go to donate</a></p>
                 <img src="assets/images/paypal.png" href="https://paypal.me/leonelhrp?locale.x=es_XC" class="img-fluid" alt="paypal" id="paypalDonation" width="100" height="100">
-
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
             </div>
         </div>
+        <a href="" class="float text-center" target="_blank" id="urlProject">
+            <button type="button" class="btn btn-primary btn-lg btn-block">Go to donate</button>
+        </a>
     </div>
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -74,6 +84,8 @@
         document.getElementById("originalImage").src = details.originalImage
         document.getElementById("titleImage").innerHTML = details.title;
         document.getElementById("descriptionImage").innerHTML = details.description;
+        document.getElementById("urlProject").href = details.url_project;
+        
     </script>
 </body>
 

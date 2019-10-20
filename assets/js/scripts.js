@@ -61,6 +61,7 @@ function checkPuzzle() {
             title: 'Felicidades, has hecho el puzzle.'
         })
         
+        document.getElementById("submit").removeAttribute("disabled");
         window.open("../details.html");
 
 	}
