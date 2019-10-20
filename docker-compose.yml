@@ -1,0 +1,8 @@
+version: '3'
+services:
+  app:
+    container_name: ${PROJECT_NAME}.app
+    build: docker/php
+    volumes:
+      - .:/${PROJECT_NAME}
+    working_dir: /${PROJECT_NAME}
